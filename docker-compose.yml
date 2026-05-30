@@ -1,0 +1,9 @@
+services:
+  front:
+    build:
+      context: .
+    container_name: commercialinventory-front
+    ports:
+      - "3000:3000"
+    environment:
+      - NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
