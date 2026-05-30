@@ -1,75 +1,64 @@
-# Nuxt Minimal Starter
+# 🎨 Gestão de Inventário - Web (Front-end)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Esta é a interface de usuário construída com **Nuxt 3** e **Vue.js**, estilizada com TailwindCSS. A aplicação consome a API RESTful de Inventário para gerenciamento de Produtos e Categorias de forma assíncrona e reativa.
 
-## Setup
+## 🛠️ Pré-requisitos
 
-Make sure to install dependencies:
+Para rodar este projeto, você precisará:
+* [API do Back-end](https://github.com/AdersonUchoa/commercialinventory-backend) rodando (Verifique as respectivas introduções deste para executá-lo, disponíveis no README do repositório da aplicação).
+* [Docker e Docker Compose](https://www.docker.com/products/docker-desktop/) (Recomendado)
+* [Node.js](https://nodejs.org/) versão 20 ou superior (Caso queira rodar localmente sem Docker).
+
+---
+
+## ⚙️ Configuração de Ambiente
+
+Na raiz do projeto Front-end, crie o seu arquivo de variáveis de ambiente:
+1. Faça uma cópia do arquivo `.env.example` e renomeie para `.env`.
+2. Certifique-se de que a variável `NUXT_PUBLIC_API_BASE` está apontando para o endereço correto onde sua API está rodando.
+
+```env
+# Exemplo do .env
+NUXT_PUBLIC_API_BASE="http://localhost:8080/api/v1"
+```
+
+---
+
+## 🐳 Executando com Docker (Recomendado)
+
+Certifique-se de que o Back-end (API) já está em execução. Em seguida, abra o terminal na raiz do projeto Front-end e execute:
 
 ```bash
-# npm
+# Constrói a imagem otimizada para produção e inicia o container em segundo plano
+docker compose up -d --build
+```
+
+Após o término da construção, a interface estará acessível em: 👉 `http://localhost:3000`
+
+> **⚠️ Atenção com as portas:** A porta **3000** precisa estar livre na sua máquina. Caso esteja em uso por outro serviço, você pode interrompê-lo ou alterá-la manualmente no `docker-compose.yml` (apenas o número à esquerda do `:`).
+
+Para parar a execução:
+
+```bash
+docker compose stop
+```
+
+---
+
+## 💻 Executando Localmente (Sem Docker - Modo de Desenvolvimento)
+
+Se desejar alterar o código, debugar ou executar sem o Docker, utilize o servidor de desenvolvimento nativo do Nuxt.
+
+### 1. Instalar os pacotes NPM
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### 2. Iniciar o servidor de desenvolvimento
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+A aplicação estará disponível em `http://localhost:3000` com Hot-Reload ativado (atualiza automaticamente ao salvar arquivos).
